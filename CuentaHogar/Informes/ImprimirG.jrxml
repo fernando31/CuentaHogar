@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0d626771-b3ba-4346-b40d-b29b2e440219">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="cuenta" class="java.lang.String"/>
+	<parameter name="movimiento" class="java.lang.String"/>
+	<parameter name="fecha" class="java.lang.String"/>
+	<parameter name="importe" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT C1.NOMBRE 'Cuenta', C2.NOMBRE 'Movimiento', M.FECHA 'Fecha', SUM(M.IMPORTE*-1) 'Importe'
+FROM CUENTAS C1, CUENTAS C2, MOVIMIENTOS M
+WHERE C1.ID_CUENTA = M.ID_CUENTA_G
+AND C2.ID_CUENTA = M.ID_CUENTA_I
+AND M.TIPO = 'G'
+AND C1.NOMBRE = $P{cuenta}
+GROUP BY C1.NOMBRE, C2.NOMBRE;
+]]>
+	</queryString>
+	<field name="Cuenta" class="java.lang.String"/>
+	<field name="Movimiento" class="java.lang.String"/>
+	<field name="Fecha" class="java.sql.Date"/>
+	<field name="Importe" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<summary>
+		<band height="256" splitType="Stretch">
+			<pieChart>
+				<chart>
+					<reportElement uuid="ee0e575f-571d-498f-a064-f67eb2b86f0e" x="211" y="45" width="380" height="167"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{Movimiento}]]></keyExpression>
+					<valueExpression><![CDATA[$F{Importe}]]></valueExpression>
+					<labelExpression><![CDATA[$F{Movimiento} + " (" + $F{Importe} + ")"]]></labelExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+		</band>
+	</summary>
+</jasperReport>
