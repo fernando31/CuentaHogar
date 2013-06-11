@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9ec8f35b-d9a5-4cf2-9379-e98beed8224d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/fernando/NetBeansProjects/CuentaHogar/src/reportes/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT C.NOMBRE 'Gasto', M.FECHA 'Fecha', (M.IMPORTE) 'Importe'
+FROM CUENTAS C, MOVIMIENTOS M
+WHERE C.ID_CUENTA = M.ID_CUENTA_I
+AND C.TIPO = 'G';]]>
+	</queryString>
+	<field name="Gasto" class="java.lang.String"/>
+	<field name="Fecha" class="java.sql.Date"/>
+	<field name="Importe" class="java.lang.Float"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="59">
+			<staticText>
+				<reportElement uuid="bb6962e5-93d6-44ac-a128-60ad6b9fb951" x="221" y="10" width="360" height="38"/>
+				<textElement>
+					<font fontName="Arial" size="32" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRAFICA DE GASTOS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<summary>
+		<band height="264" splitType="Stretch">
+			<lineChart>
+				<chart>
+					<reportElement uuid="66524987-c21d-41ea-9f5f-13065b87c31f" x="118" y="12" width="555" height="133"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{Gasto}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{Fecha}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{Importe}*-1]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<linePlot>
+					<plot/>
+				</linePlot>
+			</lineChart>
+			<subreport>
+				<reportElement uuid="ae81533d-950f-460a-9f7a-ec7fe9b52ff6" x="13" y="161" width="263" height="79"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "SubGraficaG.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>
