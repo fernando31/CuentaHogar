@@ -210,7 +210,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jScrollPane1" pref="155" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane1" pref="156" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -550,7 +550,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jScrollPane5" pref="283" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane5" pref="284" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -688,7 +688,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="panelEditarVE" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="13" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -979,7 +979,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="mEdicion">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Edicion"/>
+            <Property name="text" type="java.lang.String" value="Edici&#xf3;n"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <SubComponents>
@@ -1128,7 +1128,7 @@
                           <Component id="pBajoMov" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="pBajoTras" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Component id="pBajoTM" max="32767" attributes="0"/>
                   </Group>
@@ -1251,7 +1251,7 @@
                               <Component id="txtFechaMov" alignment="0" max="32767" attributes="0"/>
                               <Component id="etFechaMov" min="-2" pref="27" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="13" max="32767" attributes="0"/>
+                          <EmptySpace pref="14" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1511,7 +1511,8 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnGraficaTM">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Grafica"/>
+                    <Property name="text" type="java.lang.String" value="Gr&#xe1;fica"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="enabled" type="boolean" value="false"/>
                     <Property name="focusable" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -1965,7 +1966,7 @@
                               <Component id="txtFechaTras" alignment="0" max="32767" attributes="0"/>
                               <Component id="etFechaTras" alignment="1" min="-2" pref="27" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="13" max="32767" attributes="0"/>
+                          <EmptySpace pref="14" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

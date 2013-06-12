@@ -304,7 +304,7 @@ public class ElementosDinamicos {
         valores = new String[columnas];
         //Recorremos la fila de la tabla e introducimos sus valores en el vector
         for (int i = 0; i < columnas; i++) {
-            valores[i] = (String) tabla.getValueAt(fila, i);
+            valores[i] = ((String) tabla.getValueAt(fila, i)).replace("'", "").replace("\\", "");
         }
 
         //Devolvemos los valores
@@ -381,7 +381,7 @@ public class ElementosDinamicos {
         //Variables
         DefaultTableModel dtmOrdenado = this.ordenarTabla(tabla);
         JRTableModelDataSource jrmds = new JRTableModelDataSource(dtmOrdenado);
-        SimpleDateFormat dt = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
         String fecha = dt.format(new Date());
         InputStream direccion = getClass().getResourceAsStream(archivo);
 
@@ -883,7 +883,9 @@ public class ElementosDinamicos {
     public void borrarFicheroIni() throws Exception {
         String direccion = Main.class.getProtectionDomain().getCodeSource().getLocation().getPath().replace("CuentaHogar.jar", "") + "cuentaHogar.ini";
         File fichero = new File(direccion);
-        fichero.delete();
+        if(fichero.exists()){
+            fichero.delete();
+        }
     }
 
     /**
@@ -894,7 +896,6 @@ public class ElementosDinamicos {
      */
     private void generarFicheroRecuperacion(String titulo, String direccion) throws Exception {
 
-        
         //Variables
         FileWriter fichero = null;
         PrintWriter imprime = null;
@@ -940,7 +941,7 @@ public class ElementosDinamicos {
         }
 
 
-        JOptionPane.showMessageDialog(null, "Archivo de recuperacion generado con exito", titulo, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Archivo de recuperación generado con éxito", titulo, JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -979,7 +980,7 @@ public class ElementosDinamicos {
             //Cerramos el fichero
             leefichero.close();
         }
-        JOptionPane.showMessageDialog(null, "Datos recuperados con exito", titulo, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Datos recuperados con éxito", titulo, JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**

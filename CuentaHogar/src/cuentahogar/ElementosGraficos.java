@@ -1088,8 +1088,8 @@ public class ElementosGraficos extends javax.swing.JFrame {
     private void aceptarEditarMov() {
         try {
             if (tablaEditar.getSelectedRowCount() > 0) {
-                String fecha = (String) tablaEditar.getValueAt(tablaEditar.getSelectedRow(), 3);
-                String importe = ((String) tablaEditar.getValueAt(tablaEditar.getSelectedRow(), 4)).replace("-", "");
+                String fecha = ((String) tablaEditar.getValueAt(tablaEditar.getSelectedRow(), 3)).replace("'", "").replace("\\", "");
+                String importe = ((String) tablaEditar.getValueAt(tablaEditar.getSelectedRow(), 4)).replace("-", "").replace("'", "").replace("\\", "");;
                 boolean capitalSuficiente = false;
                 
                 if (!ed.comprobarFecha(fecha) || !ed.comprobarFloat(importe, false)) {
@@ -1198,9 +1198,9 @@ public class ElementosGraficos extends javax.swing.JFrame {
                 String nombreAntiguo = (String) tablaCuentasVC.getValueAt(tablaCuentasVC.getSelectedRow(), 1);
                 String numCtaAntiguo = (String) tablaCuentasVC.getValueAt(tablaCuentasVC.getSelectedRow(), 2);
 
-                String nombreNuevo = (String) tablaEditar.getValueAt(tablaEditar.getSelectedRow(), 1);
-                String numCtaNuevo = (String) tablaEditar.getValueAt(tablaEditar.getSelectedRow(), 2);
-                String importe = ((String) tablaEditar.getValueAt(tablaEditar.getSelectedRow(), 3));
+                String nombreNuevo = ((String) tablaEditar.getValueAt(tablaEditar.getSelectedRow(), 1)).replace("'", "").replace("\\", "");;
+                String numCtaNuevo = ((String) tablaEditar.getValueAt(tablaEditar.getSelectedRow(), 2)).replace("'", "").replace("\\", "");;
+                String importe = (((String) tablaEditar.getValueAt(tablaEditar.getSelectedRow(), 3))).replace("'", "").replace("\\", "");;
 
                 boolean comprueba = this.comprobarDatosCtaAntesEditar(nombreAntiguo, nombreNuevo, numCtaAntiguo, numCtaNuevo, importe);
 
@@ -1364,7 +1364,7 @@ public class ElementosGraficos extends javax.swing.JFrame {
         try {
             if (tablaEditar.getSelectedRowCount() > 0) {
                 String nombreAntiguo = (String) tTipoMovVM.getValueAt(tTipoMovVM.getSelectedRow(), 1);
-                String nombreNuevo = (String) tablaEditar.getValueAt(tablaEditar.getSelectedRow(), 1);
+                String nombreNuevo = ((String) tablaEditar.getValueAt(tablaEditar.getSelectedRow(), 1)).replace("'", "").replace("\\", "");;
                 boolean comprueba = this.comprobarNombreCta(nombreAntiguo, nombreNuevo);
 
                 if (comprueba) {
@@ -2399,7 +2399,8 @@ public class ElementosGraficos extends javax.swing.JFrame {
             }
         });
 
-        btnGraficaTM.setText("Grafica");
+        btnGraficaTM.setText("Gráfica");
+        btnGraficaTM.setToolTipText("");
         btnGraficaTM.setEnabled(false);
         btnGraficaTM.setFocusable(false);
         btnGraficaTM.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -2869,7 +2870,7 @@ public class ElementosGraficos extends javax.swing.JFrame {
                         .addComponent(pBajoMov, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pBajoTras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 10, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(pBajoTM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -2947,7 +2948,7 @@ public class ElementosGraficos extends javax.swing.JFrame {
 
         barraMenu.add(mArchivo);
 
-        mEdicion.setText("Edicion");
+        mEdicion.setText("Edición");
         mEdicion.setEnabled(false);
 
         smAddCuenta.setIcon(new javax.swing.ImageIcon("/home/fernando/NetBeansProjects/CuentaHogar_6/iconos/iconoCrearCuenta.png")); // NOI18N

@@ -753,24 +753,24 @@ public class Sentencias {
 
         //Controlamos el filtro por nombre de cuenta
         if (!cuenta.getText().isEmpty()) {
-            filtroCuenta = "AND C1.NOMBRE LIKE '" + cuenta.getText() + "%' ";
+            filtroCuenta = "AND C1.NOMBRE LIKE '" + cuenta.getText().replace("'", "").replace("\\", "") + "%' ";
 
         }
         //Controlamos el filtro por nombre de movimiento
         if (!movimiento.getText().isEmpty()) {
-            filtroMovimiento = "AND C2.NOMBRE LIKE '" + movimiento.getText() + "%' ";
+            filtroMovimiento = "AND C2.NOMBRE LIKE '" + movimiento.getText().replace("'", "").replace("\\", "") + "%' ";
         }
 
         if (!dia.getText().isEmpty()) {
-            filtroFecha = filtroFecha + "AND DATE_FORMAT(M.FECHA,'%d') " + condFecha.getSelectedItem() + " '" + dia.getText() + "' ";
+            filtroFecha = filtroFecha + "AND DATE_FORMAT(M.FECHA,'%d') " + condFecha.getSelectedItem() + " '" + dia.getText().replace("'", "").replace("\\", "") + "' ";
         }
         
         if (!mes.getText().isEmpty() ) {
-            filtroFecha = filtroFecha + "AND DATE_FORMAT(M.FECHA,'%m') " + condFecha.getSelectedItem() + " '" + mes.getText() + "' ";
+            filtroFecha = filtroFecha + "AND DATE_FORMAT(M.FECHA,'%m') " + condFecha.getSelectedItem() + " '" + mes.getText().replace("'", "").replace("\\", "") + "' ";
         }
         
         if(!anyo.getText().isEmpty()) {
-            filtroFecha = filtroFecha + "AND DATE_FORMAT(M.FECHA,'%Y') " + condFecha.getSelectedItem() + " '" + anyo.getText() + "' ";            
+            filtroFecha = filtroFecha + "AND DATE_FORMAT(M.FECHA,'%Y') " + condFecha.getSelectedItem() + " '" + anyo.getText().replace("'", "").replace("\\", "") + "' ";            
         }
 
         //Controlamos el filtro por importe
@@ -778,7 +778,7 @@ public class Sentencias {
             if(tipo.equals(I)){
                 signo = 1;
             }
-            filtroImporte = "AND (M.IMPORTE*" + signo + ") " + condImporte.getSelectedItem() + " '" + importe.getText() + "' ";
+            filtroImporte = "AND (M.IMPORTE*" + signo + ") " + condImporte.getSelectedItem() + " '" + importe.getText().replace("'", "").replace("\\", "") + "' ";
         }
 
         //Juntamos todos los filtros
